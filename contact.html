@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - Magibidz</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&Lato&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-XQoYMqMTK8LpLeA6gRIhQj8QbMxu6u5ur5A9vY+6pGI="
+    crossorigin=""
+  />
+
+  <style>
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      animation: fadeIn 1s ease-in;
+      background: linear-gradient(to bottom, #FFFFFF, #F4A8B8);
+    }
+
+    .contact {
+      text-align: center;
+      padding: 3rem;
+      background: url('https://images.pexels.com/photos/3184281/pexels-photo-3184281.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') center/cover no-repeat fixed;
+      border-radius: 15px;
+      position: relative;
+    }
+
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(rgba(109,32,119,0.7), rgba(244,168,184,0.7));
+      border-radius: 15px;
+    }
+
+    /* Animate everything except the map container */
+    .contact h1,
+    .contact p,
+    .contact-form,
+    .contact-info,
+    .newsletter {
+      position: relative;
+      z-index: 1;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: slideUp 0.8s ease-out forwards;
+    }
+
+    .contact h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: #FFFFFF;
+      text-shadow: 1px 1px 2px #E63946;
+    }
+
+    .contact p {
+      color: #FFFFFF;
+      margin: 1rem 0;
+    }
+
+    .contact-form, .newsletter {
+      max-width: 500px;
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 10px;
+      border: 2px solid #F4A8B8;
+    }
+
+    .contact-form input, .contact-form textarea,
+    .newsletter input {
+      padding: 0.8rem;
+      border: 2px solid #E63946;
+      border-radius: 5px;
+      font-size: 1rem;
+      background: rgba(244, 168, 184, 0.2);
+      color: #FFFFFF;
+    }
+
+    .contact-form button, .newsletter button {
+      padding: 0.8rem;
+      background: linear-gradient(to right, #E63946, #F4A8B8);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .contact-form button:hover, .newsletter button:hover {
+      background: linear-gradient(to right, #6D2077, #E63946);
+      transform: scale(1.05);
+    }
+
+    .contact-info {
+      margin-top: 2rem;
+    }
+
+    .contact-info p {
+      color: #FFFFFF;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #E63946;
+      transform: scale(1.1);
+    }
+
+    .map {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      border: 2px solid #F4A8B8;
+      text-align: center;
+      /* Guarantee it sits above other layers */
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Leaflet map container — never hidden */
+    #map {
+      width: 100%;
+      height: 400px;
+      border-radius: 10px;
+      border: 2px solid #E63946;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to   { transform: translateY(0);  opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      #map { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <canvas id="logo" width="100" height="100"></canvas>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="contact">
+      <h1>Get in Touch</h1>
+      <p>Send us a message, sign up for our newsletter, or visit us!</p>
+
+      <form class="contact-form">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      
+      <form>
+      <div class="newsletter">
+        <h2>Join Our Newsletter</h2>
+        <input type="email" placeholder="Your Email" required>
+        <button type="submit">Subscribe</button>
+      </div>
+      </form>
+      
+      <div class="contact-info">
+        <p>Email: <a href="mailto:info@magibidz.com">info@magibidz.com</a></p>
+        <p>Phone: +254 456-7890</p>
+        <div class="social-links">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Pinterest</a>
+        </div>
+      </div>
+
+      <div class="map">
+        <h2>Find Us at Umoja Innercore</h2>
+        <div id="map"></div>
+      </div>
+    </section>
+    <canvas id="particle-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;"></canvas>
+  </main>
+  <footer>
+    <p>© 2025 Magibidz. Crafted with Love.</p>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-o9N1j8NsC2RkO8piI9XO1MhK6JbM9A+Y1a+1C3yDpwM="
+    crossorigin=""
+  ></script>
+
+  <!-- Your logo & particle scripts -->
+  <script src="script.js"></script>
+
+  <script>
+    // Initialize map centered on Umoja Innercore
+    const map = L.map('map').setView([-1.2550, 36.8950], 15);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    L.marker([-1.2550, 36.8950])
+      .addTo(map)
+      .bindPopup('<b>Magibidz at Umoja Innercore</b>')
+      .openPopup();
+  </script>
+</body>
+</html>

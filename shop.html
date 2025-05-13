@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop - Magibidz</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&Lato&display=swap" rel="stylesheet" />
+  <style>
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      animation: fadeIn 1s ease-in;
+      background: linear-gradient(to bottom, #F4A8B8, #6D2077);
+    }
+
+    .shop {
+      padding: 2rem;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .shop h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: #FFFFFF;
+      text-align: center;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 2px #E63946;
+    }
+
+    .filter {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .filter button {
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+      background: linear-gradient(to right, #E63946, #F4A8B8);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .filter button:hover,
+    .filter button.active {
+      background: linear-gradient(to right, #6D2077, #E63946);
+      transform: scale(1.1);
+    }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .shop-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      border: 2px solid #F4A8B8;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .shop-item:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+    }
+
+    .shop-item img {
+      max-width: 100%;
+      min-width: 250px;
+      min-height: 250px;
+      border-radius: 10px;
+      border: 2px solid #E63946;
+      object-fit: cover;
+      background: #F4A8B8;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .shop-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      .shop-item img {
+        min-width: 200px;
+        min-height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <canvas id="logo" width="100" height="100"></canvas>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="shop.html" class="active">Shop</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="shop">
+      <h1>Shop Our Beadworks</h1>
+      <div class="filter">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="jewelry">Jewelry</button>
+        <button data-filter="accessories">Accessories</button>
+      </div>
+      <div class="shop-grid">
+        <div class="shop-item" data-category="jewelry">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbNNfeqOZnMtnU9r21lb0tENOo1hB-XwpWCg&s" alt="Crystal Necklace">
+          <h3>Crystal Necklace</h3>
+          <p>$45</p>
+        </div>
+        <div class="shop-item" data-category="jewelry">
+          <img src="data:image/jpeg;base64,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" alt="Beaded Bracelet">
+          <h3>Beaded Bracelet</h3>
+          <p>$25</p>
+        </div>
+        <div class="shop-item" data-category="jewelry">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-W0KcUmxJ7ImdCQdpAVMfmTnRT0K8uFa1Wg&s" alt="Drop Earrings">
+          <h3>Drop Earrings</h3>
+          <p>$30</p>
+        </div>
+        <div class="shop-item" data-category="jewelry">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRidQsmb3dtU_bCJp8D2V7ueST4wl_Oy7W8_w&s" alt="Beaded Anklet">
+          <h3>Beaded Anklet</h3>
+          <p>$20</p>
+        </div>
+        <div class="shop-item" data-category="accessories">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSglYPKiH2t_TD1-kLj5i8LR6CdJd3hAzRCTQ&s" alt="Beaded Keychain">
+          <h3>Beaded Keychain</h3>
+          <p>$15</p>
+        </div>
+        <div class="shop-item" data-category="jewelry">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-Cm_5JK-RyAjtvmit6nbB8iUDSQSnrumtpA&s" alt="Beaded Choker">
+          <h3>Beaded Choker</h3>
+          <p>$35</p>
+        </div>
+      </div>
+    </section>
+    <canvas id="particle-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></canvas>
+  </main>
+  <footer>
+    <p>© 2025 Magibidz. Crafted with Love.</p>
+  </footer>
+
+  <!-- Filter Script -->
+  <script>
+    const filterButtons = document.querySelectorAll('.filter button');
+    const items = document.querySelectorAll('.shop-item');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        items.forEach(item => {
+          const category = item.getAttribute('data-category');
+          item.style.display = (filter === 'all' || category === filter) ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

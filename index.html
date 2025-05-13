@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magibidz - Beadworks Magic</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&Lato&display=swap" rel="stylesheet">
+    <style>
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            animation: fadeIn 1s ease-in;
+            background: linear-gradient(to bottom, #FFFFFF, #F4A8B8);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 5rem 0;
+            background: url('https://images.unsplash.com/photo-1610398573835-0912f5f9c739?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(109, 32, 119, 0.6), rgba(244, 168, 184, 0.6));
+            z-index: 0;
+        }
+
+        .hero h1, .hero p, .cta-button {
+            position: relative;
+            z-index: 1;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.8s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #FFFFFF;
+            text-shadow: 2px 2px 4px #E63946;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            color: #FFFFFF;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(to right, #E63946, #F4A8B8);
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 4px 15px rgba(109, 32, 119, 0.3);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(to right, #6D2077, #E63946);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .featured, .testimonials {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(109, 32, 119, 0.2);
+        }
+
+        .featured h2, .testimonials h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #6D2077;
+            text-align: center;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .featured-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #FFFFFF;
+            border-radius: 10px;
+            border: 2px solid #F4A8B8;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .featured-item:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+        }
+
+        .featured-item img {
+            max-width: 100%;
+            min-width: 250px;
+            min-height: 250px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: #F4A8B8;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            padding: 1.5rem;
+            background: rgba(244, 168, 184, 0.3);
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .featured-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .featured-item img {
+                min-width: 200px;
+                min-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <canvas id="logo" width="100" height="100"></canvas>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Magibidz</h1>
+            <p>Weaving Dreams with Every Bead</p>
+            <a href="shop.html" class="cta-button">Discover Our Creations</a>
+        </section>
+        <section class="featured">
+            <h2>Featured Products</h2>
+            <div class="featured-grid">
+                <div class="featured-item">
+                    <img src="https://images.pexels.com/photos/4273427/pexels-photo-4273427.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=250&w=250" alt="Beaded Anklet">
+                    <h3>Beaded Anklet</h3>
+                    <p>$20</p>
+                </div>
+                <div class="featured-item">
+                    <img src="https://images.pexels.com/photos/5067672/pexels-photo-5067672.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=250&w=250" alt="Beaded Keychain">
+                    <h3>Beaded Keychain</h3>
+                    <p>$15</p>
+                </div>
+            </div>
+        </section>
+        <section class="testimonials">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p>"Magibidz’s jewelry is stunning! The craftsmanship is unmatched."</p>
+                    <p><strong>- Sarah K.</strong></p>
+                </div>
+                <div class="testimonial">
+                    <p>"I love my custom necklace. It’s a true work of art!"</p>
+                    <p><strong>- Emma L.</strong></p>
+                </div>
+            </div>
+        </section>
+        <canvas id="particle-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></canvas>
+    </main>
+    <footer>
+        <p>© 2025 Magibidz. Crafted with Love.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
